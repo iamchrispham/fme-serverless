@@ -1,6 +1,7 @@
 const { URL } = require('url');
 const fetch = require('node-fetch');
 const { query } = require('./util/hasura');
+const env = require("dotenv").config()
 
 exports.handler = async () => {
   const { movies } = await query({
@@ -16,6 +17,10 @@ exports.handler = async () => {
     `,
   });
 
+  // const api = new URL('https://correct-iguana-69.hasura.app/v1/graphql');
+
+  // // add the secret API key to the query string
+  // api.searchParams.set('apikey', process.env.HASURA_ADMIN_SECRET);
   const api = new URL('https://www.omdbapi.com/');
 
   // add the secret API key to the query string
@@ -28,6 +33,8 @@ exports.handler = async () => {
     return fetch(api)
       .then((response) => response.json())
       .then((data) => {
+        console.log('*Data: ',data);
+        console.log('API KEY: ', process.env.OMDB_API_KEY);
         const scores = data.Ratings;
 
         return {
