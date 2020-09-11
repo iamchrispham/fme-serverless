@@ -33,8 +33,8 @@ exports.handler = async () => {
     return fetch(api)
       .then((response) => response.json())
       .then((data) => {
-        console.log('*Data: ',data);
-        console.log('API KEY: ', process.env.OMDB_API_KEY);
+        // console.log('*Data: ',data);
+        // console.log('API KEY: ', process.env.OMDB_API_KEY);
         const scores = data.Ratings;
 
         return {

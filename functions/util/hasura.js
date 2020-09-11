@@ -12,7 +12,7 @@ async function query({ query, variables = {} }) {
   }).then((response) => response.json());
 
   // TODO send back helpful information if there are errors
-  console.log('*HASURA:', result.data);
+  // console.log('*HASURA:', result.data);
   return result.data;
 }
 
